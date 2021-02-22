@@ -1,0 +1,6 @@
+include ':search'
+include ':partTime'
+include ':fullTime'
+include ':core'
+include ':app'
+rootProject.name = "JobWishlist"
