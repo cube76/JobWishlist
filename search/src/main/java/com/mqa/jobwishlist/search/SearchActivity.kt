@@ -18,6 +18,8 @@ import com.mqa.jobwishlist.di.SearchModuleDependencies
 import com.mqa.jobwishlist.search.databinding.ActivitySearchBinding
 import com.mqa.jobwishlist.ui.desc.DescriptionActivity
 import dagger.hilt.android.EntryPointAccessors
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,6 +35,8 @@ class SearchActivity : AppCompatActivity() {
     private val jobAdapter = JobAdapter()
     private lateinit var binding: ActivitySearchBinding
 
+    @FlowPreview
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerSearchComponent.builder()
             .context(this)
@@ -92,6 +96,8 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    @ExperimentalCoroutinesApi
+    @FlowPreview
     private fun getJobData() {
         searchViewModel.searchResult.observe(this, { job ->
             if (job != null) {

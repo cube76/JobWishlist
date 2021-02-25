@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.mqa.jobwishlist.core.utils.Constant.Companion.DEEPLINK_SEARCH
 import com.mqa.jobwishlist.databinding.ActivityMainBinding
 import com.mqa.jobwishlist.ui.home.HomeFragment
 import com.mqa.jobwishlist.ui.wishlist.WishlistFragment
@@ -48,20 +49,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             supportActionBar?.title = getString(R.string.app_name)
         }
 
-        binding.appBarMain.content.btnFullTime
-            .setOnClickListener {
-                val uri = Uri.parse("jobwishlist://fulltime")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-        }
-
-        binding.appBarMain.content.btnPartTime
-            .setOnClickListener {
-                val uri = Uri.parse("jobwishlist://parttime")
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-            }
-
         binding.appBarMain.ivSearch.setOnClickListener {
-            val uri = Uri.parse("jobwishlist://search")
+            val uri = Uri.parse(DEEPLINK_SEARCH)
             startActivity(Intent(Intent.ACTION_VIEW, uri))
         }
     }

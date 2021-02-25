@@ -4,6 +4,7 @@ import android.os.Build
 import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
+import androidx.core.text.HtmlCompat
 
 class ConvertHtml(htmlText: String){
     var text: Spanned? = fromHtml(htmlText)
@@ -16,7 +17,7 @@ class ConvertHtml(htmlText: String){
             // we are using this flag to give a consistent behaviour
             Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
         } else {
-            Html.fromHtml(html)
+            HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
     }
 }

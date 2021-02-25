@@ -94,11 +94,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             try {
                 val response = apiService.getDescription(jobId)
                 Log.v("response",response.description)
-                if (response != null) {
-                    emit(ApiResponse.Success(response))
-                } else {
-                    emit(ApiResponse.Empty)
-                }
+                emit(ApiResponse.Success(response))
             } catch (ex: Exception) {
                 emit(ApiResponse.Error(ex.message.toString()))
                 Log.e(TAG, "getDetail: ${ex.message} ")
