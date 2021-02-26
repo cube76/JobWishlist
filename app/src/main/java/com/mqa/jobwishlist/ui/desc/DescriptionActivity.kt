@@ -87,7 +87,7 @@ class DescriptionActivity : AppCompatActivity() {
         binding.tvCompanyName.text = detailJob.employerName
         binding.tvJobTitle.text = detailJob.jobTitle
         binding.tvJobLocation.text = detailJob.locationName
-        binding.content.tvDetailDescription.text = ConvertHtml(detailJob.jobDescription).fromHtml(detailJob.jobDescription)
+        binding.content.tvDetailDescription.text = ConvertHtml().fromHtml(detailJob.jobDescription)
         binding.content.tvUrl.text = detailJob.url
 
         var statusFavorite = jobIdHome == 0
