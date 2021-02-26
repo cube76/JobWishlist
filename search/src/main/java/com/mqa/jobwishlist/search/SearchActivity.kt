@@ -64,6 +64,7 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(search: String?): Boolean {
                     lifecycleScope.launch {
                         search?.let { searchViewModel.queryChannel.send(it) }
+                        binding.progressBar.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -71,6 +72,7 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextChange(search: String?): Boolean {
                     lifecycleScope.launch {
                         search?.let { searchViewModel.queryChannel.send(it) }
+                        binding.progressBar.visibility = View.VISIBLE
                     }
                     return true
                 }
@@ -103,12 +105,17 @@ class SearchActivity : AppCompatActivity() {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        jobAdapter.setData(job.data)
+                        if (job.data != null) {
+                            jobAdapter.setData(job.data)
+                            binding.viewError.root.visibility = View.GONE
+                            binding.viewEmpty.root.visibility = View.GONE
+                        } else{
+                            binding.viewEmpty.root.visibility = View.VISIBLE
+                        }
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
                         binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.ivSomethingWrong
                     }
                 }
             }

@@ -70,7 +70,6 @@ class DescriptionActivity : AppCompatActivity() {
                         is Resource.Error -> {
                             binding.content.progressBar.visibility = View.GONE
                             binding.content.viewError.root.visibility = View.VISIBLE
-                            binding.content.viewError.ivError
                         }
                     }
                 }

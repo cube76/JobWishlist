@@ -1,0 +1,3 @@
+obfuscation dengan ProGuard pada build.gradle core
+encryption pada database dengan sqlcipher pada com.mqa.jobwishlist.core.di.DatabaseModule
+certificate pinning pada com.mqa.jobwishlist.core.di.NerworkModule
