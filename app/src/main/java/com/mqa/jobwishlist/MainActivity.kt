@@ -5,7 +5,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -27,8 +26,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
-        binding.appBarMain.content.btnPartTime.visibility = View.GONE
-        binding.appBarMain.content.btnFullTime.visibility = View.GONE
 
         val toggle = ActionBarDrawerToggle(
                 this,
@@ -61,14 +58,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_home -> {
                 fragment = HomeFragment()
-                binding.appBarMain.content.btnPartTime.visibility = View.GONE
-                binding.appBarMain.content.btnFullTime.visibility = View.GONE
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
                 fragment = WishlistFragment()
-                binding.appBarMain.content.btnPartTime.visibility = View.GONE
-                binding.appBarMain.content.btnFullTime.visibility = View.GONE
                 title = getString(R.string.menu_favorite)
             }
         }

@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mqa.jobwishlist.core.data.Resource
 import com.mqa.jobwishlist.core.ui.JobAdapter
-import com.mqa.jobwishlist.R
 import com.mqa.jobwishlist.databinding.FragmentHomeBinding
 import com.mqa.jobwishlist.ui.desc.DescriptionActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,40 +34,45 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity != null) {
+        showData()
+    }
 
-            val jobAdapter = JobAdapter()
-            jobAdapter.onItemClick = { selectedData ->
-                val intent = Intent(activity, DescriptionActivity::class.java)
-                intent.putExtra(DescriptionActivity.EXTRA_DATA, selectedData.jobId)
-                Log.e("extra home", selectedData.jobId.toString())
-                startActivity(intent)
-            }
+    private fun showData(){
 
-            homeViewModel.job.observe(viewLifecycleOwner, { job ->
-                if (job != null) {
-                    when (job) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            jobAdapter.setData(job.data)
+                if (activity != null) {
+
+                    val jobAdapter = JobAdapter()
+                    jobAdapter.onItemClick = { selectedData ->
+                        val intent = Intent(activity, DescriptionActivity::class.java)
+                        intent.putExtra(DescriptionActivity.EXTRA_DATA, selectedData.jobId)
+                        Log.e("extra home", selectedData.jobId.toString())
+                        startActivity(intent)
+                    }
+
+                    homeViewModel.job.observe(viewLifecycleOwner, { job ->
+                        if (job != null) {
+                            when (job) {
+                                is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                                is Resource.Success -> {
+                                    binding.progressBar.visibility = View.GONE
+                                    jobAdapter.setData(job.data)
+                                }
+                                is Resource.Error -> {
+                                    binding.progressBar.visibility = View.GONE
+                                    binding.viewError.root.visibility = View.VISIBLE
+                                    binding.viewError.ivError.visibility = View.VISIBLE
+                                }
+                            }
                         }
-                        is Resource.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.viewError.root.visibility = View.VISIBLE
-                            binding.viewError.ivError.visibility = View.VISIBLE
-                        }
+                    })
+
+                    with(binding.rvTourism) {
+                        layoutManager = LinearLayoutManager(context)
+                        setHasFixedSize(true)
+                        adapter = jobAdapter
                     }
                 }
-            })
-
-            with(binding.rvTourism) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = jobAdapter
             }
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

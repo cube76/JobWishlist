@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mqa.core.R
-import com.mqa.core.databinding.ItemListJobBinding
+import com.mqa.jobwishlist.core.R
+import com.mqa.jobwishlist.core.databinding.ItemListJobBinding
 import com.mqa.jobwishlist.core.domain.model.Job
 
 class JobAdapter : RecyclerView.Adapter<JobAdapter.ListViewHolder>() {

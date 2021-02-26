@@ -20,7 +20,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data
-                    android:scheme="jobwishlist"
+                    android:scheme="job"
                     android:host="search" />
             </intent-filter>
         </activity>
