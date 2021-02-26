@@ -115,18 +115,6 @@ class DescriptionActivity : AppCompatActivity() {
         }
     }
 
-//    private fun observeFavorite(id: Int) {
-//        detailJobViewModel.checkFavorite(id).observe(this, {
-//            if (it > 0) {
-//                isFavorite = true
-//                binding.fab.setImageResource(R.drawable.ic_favorite_white)
-//            } else {
-//                isFavorite = false
-//                binding.fab.setImageResource(R.drawable.ic_favorite_white)
-//            }
-//        })
-//    }
-
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (statusFavorite) {
             binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_white))

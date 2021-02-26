@@ -30,8 +30,7 @@ class JobRepository @Inject constructor(
                 }
 
                 override fun shouldFetch(data: List<Job>?): Boolean =
-//                data == null || data.isEmpty()
-                        true // ganti dengan true jika ingin selalu mengambil data dari internet
+                        true
 
                 override suspend fun createCall(): Flow<ApiResponse<List<JobResponse>>> =
                         remoteDataSource.getAllJob()
@@ -67,8 +66,7 @@ class JobRepository @Inject constructor(
                 }
 
                 override fun shouldFetch(data: List<Job>?): Boolean =
-//                data == null || data.isEmpty()
-                        true // ganti dengan true jika ingin selalu mengambil data dari internet
+                        true
 
                 override suspend fun createCall(): Flow<ApiResponse<List<JobResponse>>> =
                         remoteDataSource.getAllFullTimeJob()
@@ -88,8 +86,7 @@ class JobRepository @Inject constructor(
                 }
 
                 override fun shouldFetch(data: List<Job>?): Boolean =
-//                data == null || data.isEmpty()
-                        true // ganti dengan true jika ingin selalu mengambil data dari internet
+                        true
 
                 override suspend fun createCall(): Flow<ApiResponse<List<JobResponse>>> =
                         remoteDataSource.getAllPartTimeJob()
