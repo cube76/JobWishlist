@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
-        binding.appBarMain.content.btnPartTime.visibility = View.GONE
-        binding.appBarMain.content.btnFullTime.visibility = View.GONE
 
         val toggle = ActionBarDrawerToggle(
                 this,
@@ -61,14 +59,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_home -> {
                 fragment = HomeFragment()
-                binding.appBarMain.content.btnPartTime.visibility = View.GONE
-                binding.appBarMain.content.btnFullTime.visibility = View.GONE
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
                 fragment = WishlistFragment()
-                binding.appBarMain.content.btnPartTime.visibility = View.GONE
-                binding.appBarMain.content.btnFullTime.visibility = View.GONE
                 title = getString(R.string.menu_favorite)
             }
         }
