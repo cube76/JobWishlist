@@ -6,7 +6,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_map">Maps</string>
-    <string name="menu_favorite">Favorite</string>
+    <string name="menu_favorite">Wishlist</string>
 
     <string name="title_activity_detail_home">DetailHomeActivity</string>
     <string name="no_data">Empty data</string>
@@ -20,4 +20,5 @@
     <string name="title_search">search</string>
     <string name="no_data_found">No Data Found</string>
     <string name="something_went_wrong">Something Went Wrong</string>
+    <string name="wishlist_image">wishlist image</string>
 </resources>
