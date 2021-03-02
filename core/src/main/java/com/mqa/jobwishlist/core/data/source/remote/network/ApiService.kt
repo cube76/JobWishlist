@@ -7,7 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("search?")
+    @GET("search")
     suspend fun getList(): ListJobResponse
 
     @GET("search?")

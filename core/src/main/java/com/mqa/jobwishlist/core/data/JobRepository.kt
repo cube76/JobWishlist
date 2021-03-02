@@ -24,7 +24,7 @@ class JobRepository @Inject constructor(
     override fun getAllJob(): Flow<Resource<List<Job>>> =
             object : NetworkBoundResource<List<Job>, List<JobResponse>>() {
                 override fun loadFromDB(): Flow<List<Job>> {
-                    return localDataSource.getSearch().map {
+                    return localDataSource.getAllJob().map {
                         DataMapper.mapEntitiesToDomain(it)
                     }
                 }

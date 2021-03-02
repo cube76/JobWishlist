@@ -29,7 +29,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -43,10 +47,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures = [':search']
+    dynamicFeatures = [':search', ':wishlist']
 }
 
 dependencies {
     implementation project(":core")
+    api 'androidx.navigation:navigation-dynamic-features-fragment:2.3.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
